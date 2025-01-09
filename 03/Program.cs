@@ -10,7 +10,7 @@ class Program
     static void Main()
     {
        
-        string caminhoJson = "faturamento.json";
+        string caminhoJson = "dados.json";
 
         List<double> faturamentos = LerFaturamentoDeJson(caminhoJson);
        
@@ -54,7 +54,7 @@ class Program
         {
             string jsonString = File.ReadAllText(caminhoArquivo);
             var faturamentos = JsonSerializer.Deserialize<List<FaturamentoJson>>(jsonString);
-            return faturamentos.Select(f => f.faturamento).ToList();
+            return faturamentos.Select(f => f.valor).ToList();
         }
         catch (Exception ex)
         {
@@ -68,5 +68,5 @@ class Program
 class FaturamentoJson
 {
     public int dia { get; set; }
-    public double faturamento { get; set; }
+    public double valor { get; set; }  
 }
